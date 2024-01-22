@@ -4,9 +4,10 @@
   .container {
     .form-signin {
       width: 410px;
+
       form {
         .logo {
-          margin-bottom: 100px!important;
+          margin-bottom: 100px !important;
         }
 
         .form__title {
@@ -16,12 +17,18 @@
           letter-spacing: -0.72px;
           margin-bottom: 8px;
         }
+
         .form__title-extra {
           color: #6F727A;
           font-family: InterRegular, sans-serif;
           font-size: 16px;
           letter-spacing: -0.32px;
           margin-bottom: 40px;
+
+          &.red {
+            color: #FC5A5A;
+            animation: pulse 1s ease infinite;
+          }
         }
 
         .form__label {
@@ -35,9 +42,9 @@
         .form-control-box {
           position: relative;
 
-          .show-psw {
+          .form__input {
             position: absolute;
-            cursor: pointer ;
+            cursor: pointer;
             width: 24px;
             height: 24px;
             right: 15px;
@@ -45,6 +52,7 @@
 
           }
         }
+
         .form-control {
           box-sizing: border-box;
           height: 50px;
@@ -66,8 +74,10 @@
               cursor: pointer;
             }
           }
+
           .form-check-input {
             position: relative;
+
             &:hover {
               cursor: pointer;
             }
@@ -96,3 +106,14 @@
   }
 }
 
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}

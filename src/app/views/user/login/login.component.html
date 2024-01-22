@@ -1,4 +1,4 @@
-<section class="login">
+<section class="login" [formGroup]="loginForm">
   <div class="container d-flex justify-content-center align-items-center vh-100">
     <main class="form-signin">
       <form>
@@ -27,17 +27,41 @@
 
         </div>
         <div class="h3 fw-normal form__title">Добро пожаловать</div>
-        <div class="form__title-extra">Авторизуйтесь чтобы продолжить</div>
+        <div class="form__title-extra" [class.red]="notValueInForm">Авторизуйтесь чтобы продолжить</div>
 
         <label for="login" class="form__label">Логин<sup>*</sup></label>
         <div class="form-control-box">
-          <input type="email" class="form-control" id="login" placeholder="mail@simmmple.com">
+          <input type="email" class="form-control" id="login" placeholder="mail@simmmple.com"
+                 [ngStyle]="{'border-color': loginForm.get('login')?.invalid && (loginForm.get('login')?.dirty || loginForm.get('login')?.touched) ? '#FC5A5A': ''}"
+                 formControlName="login">
+          <div class="form__input valid">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18.3333 9.99978C18.3333 14.6031 14.6024 18.3331 9.99993 18.3331C5.39743 18.3331 1.6666 14.6031 1.6666 9.99978C1.6666 5.39811 5.39743 1.66644 9.99993 1.66644C14.6024 1.66644 18.3333 5.39811 18.3333 9.99978"
+                stroke="#FC5A5A" stroke-width="2"/>
+              <path
+                d="M10 11.9228C10.5799 11.9228 11.0526 11.4651 11.0526 10.9038V5.7559C11.0526 5.19453 10.5799 4.73682 10 4.73682C9.42015 4.73682 8.94737 5.19453 8.94737 5.7559V10.9038C8.94737 11.4651 9.42015 11.9228 10 11.9228Z"
+                fill="#FC5A5A"/>
+              <path
+                d="M10.0003 13.2101C9.42566 13.2101 8.95662 13.6712 8.95662 14.2367C8.95662 14.8022 9.43045 15.2632 10.0122 15.2632C10.5916 15.2632 11.0619 14.8022 11.0619 14.2367C11.0619 13.6712 10.5916 13.2101 10.0003 13.2101Z"
+                fill="#FC5A5A"/>
+            </svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8.34622 15.044C7.98846 15.044 7.6307 14.9022 7.35759 14.6171L3.56757 10.6599C3.02134 10.0896 3.02134 9.1658 3.56757 8.59716C4.11379 8.02685 4.99701 8.02519 5.54323 8.59549L8.34622 11.5221L14.9392 4.63836C15.4855 4.06806 16.3687 4.06806 16.9149 4.63836C17.4611 5.20867 17.4611 6.1325 16.9149 6.70281L9.33485 14.6171C9.06174 14.9022 8.70398 15.044 8.34622 15.044Z"
+                fill="#249F5D"/>
+            </svg>
+
+          </div>
         </div>
 
         <label for="password" class="form__label">Пароль<sup>*</sup></label>
         <div class="form-control-box">
-          <input type="password" class="form-control" id="password" placeholder="минимум 8 символов">
-          <div class="show-psw">
+          <input type="password" class="form-control" id="password" placeholder="минимум 8 символов"
+                 [ngStyle]="{'border-color': loginForm.get('password')?.invalid &&
+                 (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) ? '#FC5A5A': ''}"
+                 formControlName="password">
+          <div class="form__input show-psw">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_2_702)">
                 <path
@@ -50,12 +74,17 @@
                 </clipPath>
               </defs>
             </svg>
-
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M3.33335 9.70415L1.66669 11.6666M18.3334 11.6666L16.67 9.70665M7.42835 11.4L6.66669 13.75M12.5525 11.4066L13.3334 13.75M1.66669 8.33331C1.66669 8.33331 4.58335 11.6666 10 11.6666C15.4167 11.6666 18.3334 8.33331 18.3334 8.33331H1.66669Z"
+                stroke="#4C54F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
         </div>
         <div class="form-check d-flex align-items-center justify-content-between">
           <div class="">
-            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault"
+                   formControlName="rememberMe">
             <label class="form-check-label" for="flexCheckDefault">
               Запомнить
             </label>
@@ -64,7 +93,11 @@
           <a href="#" class="form__link">Забыли пароль?</a>
         </div>
         <div class="form__action d-flex align-items-center justify-content-center">
-          <button class="btn btn-primary w-25" type="button" routerLink="/dashboard">Войти</button>
+          <button class="btn btn-primary w-25" type="button" routerLink="dashboard"
+                  [disabled]="loginForm.invalid"
+                  (click)="login()">
+            Войти
+          </button>
         </div>
 
       </form>

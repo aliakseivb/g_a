@@ -5,7 +5,6 @@ import {DashboardComponent} from "./views/main/dashboard.component";
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
-  // {path: '', loadChildren: () => import('./views/user/user.module').then(m => m.UserModule)}
 ];
 
 @NgModule({
