@@ -1,0 +1,98 @@
+@import "../../../../assets/styles/variables";
+
+.login {
+  .container {
+    .form-signin {
+      width: 410px;
+      form {
+        .logo {
+          margin-bottom: 100px!important;
+        }
+
+        .form__title {
+          color: $common-text-color;
+          font-family: InterBold, sans-serif;
+          font-size: 36px;
+          letter-spacing: -0.72px;
+          margin-bottom: 8px;
+        }
+        .form__title-extra {
+          color: #6F727A;
+          font-family: InterRegular, sans-serif;
+          font-size: 16px;
+          letter-spacing: -0.32px;
+          margin-bottom: 40px;
+        }
+
+        .form__label {
+          color: $common-text-color;
+          font-family: InterMedium, sans-serif;
+          font-size: 14px;
+          letter-spacing: -0.28px;
+          margin-bottom: 13px;
+        }
+
+        .form-control-box {
+          position: relative;
+
+          .show-psw {
+            position: absolute;
+            cursor: pointer ;
+            width: 24px;
+            height: 24px;
+            right: 15px;
+            top: 15px;
+
+          }
+        }
+        .form-control {
+          box-sizing: border-box;
+          height: 50px;
+          margin-bottom: 24px;
+          border-radius: 5px;
+          border: 1px solid #E0E2E7;
+          padding: 18px 40px 18px 24px;
+        }
+
+        .form-check {
+          margin-top: 7px;
+          margin-bottom: 33px;
+
+          .form-check-label {
+            font-family: InterRegular, sans-serif;
+            font-size: 14px;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+          .form-check-input {
+            position: relative;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+
+          .form__link {
+            color: #4C54F4;
+            font-family: InterMedium, sans-serif;
+            font-size: 14px;
+            letter-spacing: -0.28px;
+            text-decoration: none;
+          }
+        }
+
+        .form__action {
+          .btn {
+            width: 118px;
+            height: 54px;
+            font-family: InterSemiBold, sans-serif;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+
+  }
+}
+

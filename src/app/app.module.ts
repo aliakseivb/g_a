@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './views/main/dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {UserModule} from "./views/user/user.module";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    UserModule,
     NgbModule,
   ],
   providers: [],
