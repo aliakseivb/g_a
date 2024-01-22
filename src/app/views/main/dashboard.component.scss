@@ -3,12 +3,19 @@
   .dashboard__container {
     .dashboard__user {
       .dashboard__user_image {
-        background-color: #fff;
+        background-size: cover;
+        background-position: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
       }
       .dashboard__user_info{
         font-size: 12px;
         .dashboard__user_person {
           font-weight: bold;
+        }
+        .dashboard__user_id {
+          font-size: 12px;
         }
       }
 

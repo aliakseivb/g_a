@@ -27,11 +27,11 @@
 
         </div>
         <div class="h3 fw-normal form__title">Добро пожаловать</div>
-        <div class="form__title-extra" [class.red]="notValueInForm">Авторизуйтесь чтобы продолжить</div>
+        <div class="form__title-extra">Авторизуйтесь чтобы продолжить</div>
 
         <label for="login" class="form__label">Логин<sup>*</sup></label>
         <div class="form-control-box">
-          <input type="email" class="form-control" id="login" placeholder="mail@simmmple.com"
+          <input type="text" class="form-control" id="login" placeholder="mail@simmmple.com" [ngModel]="loginValue"
                  [ngStyle]="{'border-color': loginForm.get('login')?.invalid && (loginForm.get('login')?.dirty || loginForm.get('login')?.touched) ? '#FC5A5A': ''}"
                  formControlName="login">
           <div class="form__input valid">
@@ -83,7 +83,7 @@
         </div>
         <div class="form-check d-flex align-items-center justify-content-between">
           <div class="">
-            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault"
+            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" [(ngModel)]="selected"
                    formControlName="rememberMe">
             <label class="form-check-label" for="flexCheckDefault">
               Запомнить
@@ -93,7 +93,7 @@
           <a href="#" class="form__link">Забыли пароль?</a>
         </div>
         <div class="form__action d-flex align-items-center justify-content-center">
-          <button class="btn btn-primary w-25" type="button" routerLink="dashboard"
+          <button class="btn btn-primary w-25" type="button"
                   [disabled]="loginForm.invalid"
                   (click)="login()">
             Войти
