@@ -1,0 +1,29 @@
+.main {
+  background-color: #bebebe;
+  .main__container {
+    .main__user {
+      .main__user_image {
+        background-color: #fff;
+        //width: 50px;
+      }
+      .main__user_info{
+        font-size: 12px;
+        .main__user_person {
+          font-weight: bold;
+        }
+      }
+
+    }
+    .main__form {
+      font-size: 16px;
+
+      .main__form_input {
+        outline: none;
+        font-size: 14px;
+        height: 30px;
+      }
+    }
+
+  }
+
+}
