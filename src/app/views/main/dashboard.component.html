@@ -1,0 +1,21 @@
+<div class="dashboard pt-2">
+  <div class="container dashboard__container">
+    <div class="dashboard__user d-flex justify-content-start align-items-center mb-4">
+      <div class="dashboard__user_image me-2" style="background-image: url({{thisUser!.userInfo!.userAvatar}})"></div>
+      <div class="dashboard__user_info">
+        <div class="dashboard__user_person">{{thisUser!.userInfo.userName}}</div>
+        <div class="dashboard__user_id">
+          <span>ID пользователя: </span>
+          <span>{{thisUser!.userInfo.userId}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard__form">
+      <div class="dashboard__form_label mb-2">Сообщение</div>
+      <input type="text" class="dashboard__form_input mb-3 w-50 rounded-1 border-0 ps-2 ">
+      <div class="dashboard__form_action">
+        <button type="button" class="btn btn-primary">Сообщение</button>
+      </div>
+    </div>
+  </div>
+</div>
