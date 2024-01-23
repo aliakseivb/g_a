@@ -7,7 +7,7 @@ import { DashboardComponent } from './views/main/dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {UserModule} from "./views/user/user.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     NgbModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 3000}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -31,11 +31,11 @@
 
         <label for="login" class="form__label">Логин<sup>*</sup></label>
         <div class="form-control-box">
-          <input type="text" class="form-control" id="login" placeholder="mail@simmmple.com" [ngModel]="loginValue"
+          <input type="text" class="form-control" id="login" placeholder="mail@simmmple.com" [ngModel]="loginValue" [class]="loginValue? 'valid': ''" (input)="onChangeLogin()"
                  [ngStyle]="{'border-color': loginForm.get('login')?.invalid && (loginForm.get('login')?.dirty || loginForm.get('login')?.touched) ? '#FC5A5A': ''}"
                  formControlName="login">
-          <div class="form__input valid">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div class="form__input-svg">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" [class]="!loginValue? 'valid': 'invalid'">
               <path
                 d="M18.3333 9.99978C18.3333 14.6031 14.6024 18.3331 9.99993 18.3331C5.39743 18.3331 1.6666 14.6031 1.6666 9.99978C1.6666 5.39811 5.39743 1.66644 9.99993 1.66644C14.6024 1.66644 18.3333 5.39811 18.3333 9.99978"
                 stroke="#FC5A5A" stroke-width="2"/>
@@ -46,7 +46,7 @@
                 d="M10.0003 13.2101C9.42566 13.2101 8.95662 13.6712 8.95662 14.2367C8.95662 14.8022 9.43045 15.2632 10.0122 15.2632C10.5916 15.2632 11.0619 14.8022 11.0619 14.2367C11.0619 13.6712 10.5916 13.2101 10.0003 13.2101Z"
                 fill="#FC5A5A"/>
             </svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" [class]="loginValue? 'valid': 'invalid'">
               <path
                 d="M8.34622 15.044C7.98846 15.044 7.6307 14.9022 7.35759 14.6171L3.56757 10.6599C3.02134 10.0896 3.02134 9.1658 3.56757 8.59716C4.11379 8.02685 4.99701 8.02519 5.54323 8.59549L8.34622 11.5221L14.9392 4.63836C15.4855 4.06806 16.3687 4.06806 16.9149 4.63836C17.4611 5.20867 17.4611 6.1325 16.9149 6.70281L9.33485 14.6171C9.06174 14.9022 8.70398 15.044 8.34622 15.044Z"
                 fill="#249F5D"/>
@@ -57,12 +57,14 @@
 
         <label for="password" class="form__label">Пароль<sup>*</sup></label>
         <div class="form-control-box">
-          <input type="password" class="form-control" id="password" placeholder="минимум 8 символов"
+          <input [type]="(showPsw ? 'text': 'password')" class="form-control" id="password" placeholder="минимум 8 символов" [class]="pasValue? 'valid': ''"
+                 [class.hide]="(!showPsw && loginForm.controls.password.value?.length !== 0) || !!pasValue"
+                 [ngModel]="pasValue"
                  [ngStyle]="{'border-color': loginForm.get('password')?.invalid &&
                  (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) ? '#FC5A5A': ''}"
                  formControlName="password">
-          <div class="form__input show-psw">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div class="form__input-svg">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="showPsw" (click)="toggleSvg()">
               <g clip-path="url(#clip0_2_702)">
                 <path
                   d="M9.99999 5.41667C13.1583 5.41667 15.975 7.19167 17.35 10C15.975 12.8083 13.1667 14.5833 9.99999 14.5833C6.83333 14.5833 4.02499 12.8083 2.64999 10C4.02499 7.19167 6.84166 5.41667 9.99999 5.41667ZM9.99999 3.75C5.83333 3.75 2.27499 6.34167 0.833328 10C2.27499 13.6583 5.83333 16.25 9.99999 16.25C14.1667 16.25 17.725 13.6583 19.1667 10C17.725 6.34167 14.1667 3.75 9.99999 3.75ZM9.99999 7.91667C11.15 7.91667 12.0833 8.85 12.0833 10C12.0833 11.15 11.15 12.0833 9.99999 12.0833C8.84999 12.0833 7.91666 11.15 7.91666 10C7.91666 8.85 8.84999 7.91667 9.99999 7.91667ZM9.99999 6.25C7.93333 6.25 6.24999 7.93333 6.24999 10C6.24999 12.0667 7.93333 13.75 9.99999 13.75C12.0667 13.75 13.75 12.0667 13.75 10C13.75 7.93333 12.0667 6.25 9.99999 6.25Z"
@@ -74,7 +76,7 @@
                 </clipPath>
               </defs>
             </svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="!showPsw" (click)="toggleSvg()">
               <path
                 d="M3.33335 9.70415L1.66669 11.6666M18.3334 11.6666L16.67 9.70665M7.42835 11.4L6.66669 13.75M12.5525 11.4066L13.3334 13.75M1.66669 8.33331C1.66669 8.33331 4.58335 11.6666 10 11.6666C15.4167 11.6666 18.3334 8.33331 18.3334 8.33331H1.66669Z"
                 stroke="#4C54F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

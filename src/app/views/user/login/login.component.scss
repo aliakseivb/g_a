@@ -37,7 +37,7 @@
         .form-control-box {
           position: relative;
 
-          .form__input {
+          .form__input-svg {
             position: absolute;
             cursor: pointer;
             width: 24px;
@@ -45,6 +45,12 @@
             right: 15px;
             top: 15px;
 
+            svg.valid {
+              display: block;
+            }
+            svg.invalid {
+              display: none;
+            }
           }
         }
 
@@ -55,8 +61,25 @@
           border-radius: 5px;
           border: 1px solid #E0E2E7;
           padding: 18px 40px 18px 24px;
-        }
+          letter-spacing: -0.28px;
 
+          &.valid {
+            color: #249F5D;
+            border: 1px solid #249F5D;
+          }
+          &.invalid {
+            color: #FC5A5A;
+            border: 1px solid #FC5A5A;
+          }
+
+        }
+        input[type='password'].hide {
+          font-size: 50px;
+          &.valid {
+            color: #000;
+            border: 1px solid #249F5D;
+          }
+        }
         .form-check {
           margin-top: 7px;
           margin-bottom: 33px;
